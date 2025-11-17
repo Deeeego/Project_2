@@ -6,14 +6,7 @@ import openpyxl
 
 st.title("📊 Favorite Run Line Coverage (MLB 2021)")
 
-try:
-    df = pd.read_excel("mlb-odds-2021.xlsx", engine='openpyxl')
-    st.write("Data from stored file:")
-    st.dataframe(df)
-except FileNotFoundError:
-    st.error("Error: 'mlb-odds-2021.xlsx' not found. Ensure it's in the correct path and committed to your repository.")
-except Exception as e:
-    st.error(f"An error occurred while reading the stored file: {e}")
+df = pd.read_excel("mlb-odds-2021.xlsx", engine='openpyxl')
 
 # Pair teams into games
 df_sorted = df.sort_values(['Date', 'Rot'])
