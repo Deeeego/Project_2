@@ -4,8 +4,6 @@ import matplotlib.pyplot as plt
 
 st.set_page_config(page_title="MLB Totals & Run Line Dashboard", layout="wide")
 
-st.title("⚾ Load MLB Odds Dataset From GitHub")
-
 RAW_URL = "https://raw.githubusercontent.com/Deeeego/Project_2/main/streamlit_app/pages/mlb-odds-2021.xlsx"
 
 # ------------------------------------------------------
