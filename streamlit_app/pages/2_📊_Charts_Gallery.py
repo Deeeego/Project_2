@@ -3,10 +3,30 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 import openpyxl
+import requests
+from io import BytesIO
+
+st.title("⚾ Load MLB Odds Dataset From GitHub")
+
+RAW_URL = "https://raw.githubusercontent.com/Deeeego/Project_2/main/streamlit_app/pages/mlb-odds-2021.xlsx"
+
+# ------------------------------------------------------
+# Cached file loader
+# ------------------------------------------------------
+@st.cache_data
+def load_mlb_data(url):
+    response = requests.get(url)
+    return pd.read_excel(BytesIO(response.content))
+
+# Load data
+df = load_mlb_data(RAW_URL)
+
+# Preview
+st.subheader("Dataset Loaded Successfully")
+st.dataframe(df.head(), use_container_width=True)
 
 st.title("📊 Favorite Run Line Coverage (MLB 2021)")
 
-df = pd.read_excel("mlb-odds-2021.xlsx", engine='openpyxl')
 
 # Pair teams into games
 df_sorted = df.sort_values(['Date', 'Rot'])
