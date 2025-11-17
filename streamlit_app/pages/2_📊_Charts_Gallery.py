@@ -2,11 +2,18 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+import openpyxl
 
 st.title("📊 Favorite Run Line Coverage (MLB 2021)")
 
-# Load data
-df = pd.read_excel("mlb-odds-2021.xlsx")
+try:
+    df = pd.read_excel("data.xlsx", engine='openpyxl')
+    st.write("Data from stored file:")
+    st.dataframe(df_stored)
+except FileNotFoundError:
+    st.error("Error: 'data.xlsx' not found. Ensure it's in the correct path and committed to your repository.")
+except Exception as e:
+    st.error(f"An error occurred while reading the stored file: {e}")
 
 # Pair teams into games
 df_sorted = df.sort_values(['Date', 'Rot'])
