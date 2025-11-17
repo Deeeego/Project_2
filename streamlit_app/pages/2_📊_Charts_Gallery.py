@@ -6,7 +6,7 @@ import seaborn as sns
 st.title("📊 Favorite Run Line Coverage (MLB 2021)")
 
 # Load data
-df = pd.read_excel("Project_2/streamlit_app/pages/mlb-odds-2021.xlsx")
+df = pd.read_excel("mlb-odds-2021.xlsx")
 
 # Pair teams into games
 df_sorted = df.sort_values(['Date', 'Rot'])
