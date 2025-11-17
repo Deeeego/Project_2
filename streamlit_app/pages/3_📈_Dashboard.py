@@ -4,10 +4,22 @@ import matplotlib.pyplot as plt
 
 st.set_page_config(page_title="MLB Totals & Run Line Dashboard", layout="wide")
 
-st.title("⚾ MLB Totals & Run Line Coverage Dashboard")
+st.title("⚾ Load MLB Odds Dataset From GitHub")
 
-# Load the MLB data
-df = pd.read_excel("mlb-odds-2021.xlsx")
+RAW_URL = "https://raw.githubusercontent.com/Deeeego/Project_2/main/streamlit_app/pages/mlb-odds-2021.xlsx"
+
+# ------------------------------------------------------
+# Cached file loader
+# ------------------------------------------------------
+@st.cache_data
+def load_mlb_data(url):
+    response = requests.get(url)
+    return pd.read_excel(BytesIO(response.content))
+
+# Load data
+df = load_mlb_data(RAW_URL)
+
+st.title("⚾ MLB Totals & Run Line Coverage Dashboard")
 
 # Convert custom date format
 
