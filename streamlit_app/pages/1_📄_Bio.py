@@ -7,7 +7,7 @@ st.title("💼 Professional Bio")
 st.header("Professional Summary")
 
 st.write("""
-I am an MSU Denver Senior due to graduate next Spring. My interests include sports, cards and cooking.
+My name is Diego Molinar and I am an MSU Denver Senior due to graduate next Spring. My interests include sports, cards and cooking.
 The tools I've been using is numpy, pandas, tableau and streamlit. 
 My focus areas include data cleaning, visualization design, and dashboard development in this class.
 """)
